@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://setu-mine-rescue-rover.vercel.app/"><img src="https://img.shields.io/badge/Live_Web_Platform-Vercel_Production-00f0ff?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Platform"></a>
-  <a href="https://github.com/moinkhanCreates/SETU"><img src="https://img.shields.io/badge/GitHub_Repository-SETU_Core-f59e0b?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo"></a>
+  <a href="https://github.com/abarhammalik/SETU-Dashboard"><img src="https://img.shields.io/badge/GitHub_Repository-SETU--Dashboard-f59e0b?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Repo"></a>
   <a href="https://setu-mine-rescue-rover.vercel.app/#credibility"><img src="https://img.shields.io/badge/Certification_Target-DGMS_%2F_PESO_Ex_d_I_Mb-10b981?style=for-the-badge&logo=shield&logoColor=white" alt="Compliance"></a>
   <br>
   <img src="https://img.shields.io/badge/National_Mission-Atmanirbhar_Bharat-ff9933?style=flat-square" alt="Atmanirbhar Bharat">
@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <b>Surface Ground Control Station (GCS) Console · Telemetry & Physics Analytics Engine · SIH 2026</b>
+  <b>Surface Ground Control Station (GCS) Console v3.2 · Telemetry & Physics Analytics Engine · SIH 2026</b>
 </p>
 
 <p align="center">
@@ -21,14 +21,44 @@
 
 ---
 
-## 🌐 Quick Access Links
+## 🌐 Quick Access & Ecosystem Links
 
 * 🌐 **Official Web Platform:** [https://setu-mine-rescue-rover.vercel.app/](https://setu-mine-rescue-rover.vercel.app/)
-* 💻 **GitHub Code Repository:** [https://github.com/moinkhanCreates/SETU](https://github.com/moinkhanCreates/SETU)
+* 💻 **GCS Dashboard GitHub Repository:** [https://github.com/abarhammalik/SETU-Dashboard](https://github.com/abarhammalik/SETU-Dashboard)
 * 📹 **6 Field Video Demonstrations:** [https://setu-mine-rescue-rover.vercel.app/#demonstrations](https://setu-mine-rescue-rover.vercel.app/#demonstrations)
 * 🧭 **Interactive Hardware Schematic:** [https://setu-mine-rescue-rover.vercel.app/#hardware-labeling](https://setu-mine-rescue-rover.vercel.app/#hardware-labeling)
 * 🎮 **Handheld OCU Terminal Simulator:** [https://setu-mine-rescue-rover.vercel.app/#ocu-sim](https://setu-mine-rescue-rover.vercel.app/#ocu-sim)
-* 📑 **DGMS & CIMFR Roadmap:** [https://setu-mine-rescue-rover.vercel.app/#credibility](https://setu-mine-rescue-rover.vercel.app/#credibility)
+* 📑 **DGMS & CIMFR Compliance Roadmap:** [https://setu-mine-rescue-rover.vercel.app/#credibility](https://setu-mine-rescue-rover.vercel.app/#credibility)
+
+---
+
+## ⚡ Key GCS Features & Capabilities (v3.2)
+
+### 1. Dual-Mode Tactical HUD
+* **0-Lux Tactical Dark HUD**: Engineered for low-light command shelters with glowing electric-cyan accents and high-contrast typography.
+* **High-Visibility Enterprise Light HUD**: Optimized for bright outdoor conditions and high-ambient incident command deployments.
+* **Instant Dynamic Toggle**: Single-click HUD mode switcher with automated subpixel font antialiasing and WCAG-compliant contrast.
+
+### 2. Multi-Domain Subsystem Command Matrix
+* `⌖ 01 · MISSION FLIGHT DECK`: Quad-feed low-latency subterranean camera HUD (IMX662 Low-Light Visible + FLIR Boson Radiometric LWIR Thermal + Ouster 3D Point-Cloud).
+* `⌬ 02 · 5-GAS ATMOSPHERICS`: Real-time Coward explosibility triangle, Graham's spontaneous combustion ratio, and continuous multi-gas trend charts.
+* `◎ 03 · FMCW BIO-RADAR ARRAY`: Sub-surface 400 MHz micro-Doppler human vital sign detector with 0.32 Hz respiration isolation and void localization.
+* `◈ 04 · EDGE AI & 3D SLAM`: NVIDIA Jetson AGX Orin edge inference stream (YOLOv10 hazard detection at < 3.0 ms) and real-time 3D LIO-SAM mapping.
+* `◫ 05 · SETU ECOSYSTEM & WEB`: Full hardware inventory, actuator health monitor, mesh hop topology, and external link portal.
+
+### 3. Mission Scenario Demonstration Stepper
+Six built-in operational mission scenarios with immediate multi-sensor telemetry simulation and regulatory proofs:
+1. **⌖ S1 · Routine Patrol**: Baseline autonomous traversal, multi-sensor fusion stability, low-power mesh connectivity.
+2. **◎ S2 · Trapped Survivor**: 400 MHz FMCW sub-surface Doppler lock through 4.2m rubble collapse; acoustic intercom unmuted.
+3. **⌬ S3 · Seam Heating**: Carbon monoxide elevation (65 PPM) and Graham's Ratio 0.72 detection of invisible spontaneous combustion.
+4. **⬡ S4 · DGMS CH₄ Interlock**: 1.45% methane trip crossing statutory 1.25% DGMS limit; automatic electrical power isolation.
+5. **▲ S5 · Slag Incline / Tilt**: 38.5° rubble slag traversal exceeding 30° safe margin; active flipper sub-tracks compensation.
+6. **⎇ S6 · Mesh Relay Hop**: Sub-1GHz LoRa signal drops to -96 dBm; autonomous mesh relay packet forwarding.
+
+### 4. Tactical Left-Side Calibration Console
+* **Real-Time Sliders**: Fine-tune $CH_4$, $O_2$, $CO$, $CO_2$, $H_2$, Mesh RSSI, and chassis tilt.
+* **Interactive Life Simulation**: Toggle trapped survivor respiration signatures and sensor drift.
+* **Statutory DGMS Compliance Seal**: Live tracking of DGMS Tech Circular 02/2021 interlocks and GCS mission timestamp.
 
 ---
 
@@ -125,8 +155,8 @@ $$5.0\% \le CH_4 \le 15.0\% \quad \text{at ambient } O_2 \ge 12.1\%$$
 
 ### 1. Clone Repository & Environment Setup
 ```bash
-git clone https://github.com/moinkhanCreates/SETU.git
-cd SETU
+git clone https://github.com/abarhammalik/SETU-Dashboard.git
+cd SETU-Dashboard
 ```
 
 ### 2. Install Dependencies
@@ -142,17 +172,18 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
-## 📂 Project Structure
+## 📂 Repository Structure
 
 ```text
-SETU-GCS-DASHBOARD/
+SETU-DASHBOARD/
 │
+├── .streamlit/
+│   └── config.toml          # Streamlit server & UI configuration
 ├── app.py                  # Tactical Streamlit GCS Mission Control Console (v3.2)
 ├── mine_analytics.py       # Geochemical engine for mine gas physics & fire ratios
 ├── requirements.txt        # Core dependencies (streamlit, pandas, numpy, altair)
 ├── README.md               # Complete technical documentation & architecture
-├── entire.md               # Comprehensive Project SETU system specifications
-└── summary.md              # Executive abstract & field proving summary
+└── .gitignore              # Repository exclusion rules
 ```
 
 ---
