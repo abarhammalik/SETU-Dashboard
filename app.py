@@ -10,7 +10,7 @@ National Initiatives: Atmanirbhar Bharat · Make in India
 
 Official Links:
 - Web Platform: https://setu-mine-rescue-rover.vercel.app/
-- GitHub Repository: https://github.com/moinkhanCreates/SETU
+- GitHub Repository: https://github.com/abarhammalik/SETU-Dashboard
 - 6 Field Demos: https://setu-mine-rescue-rover.vercel.app/#demonstrations
 - Hardware Schematic: https://setu-mine-rescue-rover.vercel.app/#hardware-labeling
 - OCU Terminal Simulator: https://setu-mine-rescue-rover.vercel.app/#ocu-sim
@@ -1203,7 +1203,7 @@ st.markdown(
             </div>
             <div class="qa-arrow">→</div>
         </a>
-        <a href="https://github.com/moinkhanCreates/SETU" target="_blank" class="qa-card qa-violet">
+        <a href="https://github.com/abarhammalik/SETU-Dashboard" target="_blank" class="qa-card qa-violet">
             <div class="qa-icon"><i class="fab fa-github"></i></div>
             <div class="qa-content">
                 <span class="qa-micro-tag">OPEN SOURCE</span>
@@ -1381,64 +1381,75 @@ else:
 # Left Side Panel: Tactical Telemetry & Sensor Calibration Deck
 # --------------------------------------------------------------------------- #
 
+calib_status_text = "⚙ MANUAL SLIDERS ACTIVE" if st.session_state.is_custom_mode else f"🔒 SYNCED: S{st.session_state.active_scenario_idx + 1} PROFILE"
+calib_status_color = ACCENT_AMBER if st.session_state.is_custom_mode else SAFE_GREEN
+
 st.sidebar.markdown(
     textwrap.dedent(f"""
-    <div style="margin-top: 1rem; margin-bottom: 0.6rem;">
-        <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 800; color: {APP_TEXT}; letter-spacing: -0.01em;">
-            ⚙ TELEMETRY CALIBRATION
-        </span>
-        <div style="font-size: 0.76rem; color: {APP_TEXT_MUTED}; font-family: 'Inter', sans-serif;">
-            Real-time manual overrides for simulated sensors
+    <div style="margin-top: 1rem; margin-bottom: 0.75rem; background: {'#FFFFFF' if is_light else '#121C2B'}; border: 1.5px solid {'#CBD5E1' if is_light else '#233549'}; border-radius: 10px; padding: 0.85rem 1rem; box-shadow: {'0 2px 8px rgba(0,0,0,0.04)' if is_light else '0 4px 14px rgba(0,0,0,0.3)'};">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+            <span style="font-family: 'Space Grotesk', sans-serif; font-size: 0.96rem; font-weight: 800; color: {'#0F172A' if is_light else '#FFFFFF'}; letter-spacing: -0.01em;">
+                ⚙ TELEMETRY CALIBRATION
+            </span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; color: {calib_status_color}; background: {calib_status_color}18; border: 1px solid {calib_status_color}45; padding: 0.15rem 0.45rem; border-radius: 4px;">
+                {calib_status_text}
+            </span>
+        </div>
+        <div style="font-size: 0.76rem; color: {'#64748B' if is_light else '#CBD5E1'}; font-family: 'Inter', sans-serif; line-height: 1.4;">
+            Fine-tune multi-gas mixtures, kinematics, and sub-surface vital parameters in real-time.
         </div>
     </div>
     """),
     unsafe_allow_html=True,
 )
 
-# Tactical Launcher Buttons
+# Tactical Quick-Launch Command Buttons
 sb_col1, sb_col2 = st.sidebar.columns(2)
 with sb_col1:
-    st.link_button("🌐 Web App", "https://setu-mine-rescue-rover.vercel.app/", use_container_width=True)
+    st.link_button("🌐 Web Platform", "https://setu-mine-rescue-rover.vercel.app/", use_container_width=True)
 with sb_col2:
-    st.link_button("⌥ GitHub", "https://github.com/moinkhanCreates/SETU", use_container_width=True)
+    st.link_button("⌥ GitHub Repo", "https://github.com/abarhammalik/SETU-Dashboard", use_container_width=True)
 
 # Module 1: 5-Gas Atmospheric Suite
 st.sidebar.markdown(
     textwrap.dedent(f"""
-    <div class="sidebar-mod-badge" style="color: {'#D97706' if is_light else '#F59E0B'}; margin-top: 0.8rem;">
+    <div class="sidebar-mod-badge" style="color: {'#B45309' if is_light else '#F59E0B'}; margin-top: 1rem; display: flex; align-items: center; justify-content: space-between;">
         <span>⌬ MODULE 01 · 5-GAS ATMOSPHERICS</span>
+        <span style="font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; opacity: 0.85;">CH₄·CO·O₂·CO₂·H₂</span>
     </div>
     """),
     unsafe_allow_html=True,
 )
-ch4_input = st.sidebar.slider("CH₄ Methane (% vol)", 0.0, 15.0, float(ch4_val), 0.05, help="DGMS Cutoff threshold: 1.25% vol")
+ch4_input = st.sidebar.slider("CH₄ Methane (% vol)", 0.0, 15.0, float(ch4_val), 0.05, help="DGMS Mandatory Cutoff threshold: 1.25% vol")
 o2_input = st.sidebar.slider("O₂ Oxygen (% vol)", 5.0, 21.5, float(o2_val), 0.1, help="Safe atmospheric range: 19.5% – 21.0%")
-co_input = st.sidebar.slider("CO Carbon Monoxide (PPM)", 0.0, 300.0, float(co_val), 5.0, help="Graham's Ratio fire precursor tracking")
+co_input = st.sidebar.slider("CO Carbon Monoxide (PPM)", 0.0, 300.0, float(co_val), 5.0, help="Graham's Ratio spontaneous coal heating tracker")
 co2_input = st.sidebar.slider("CO₂ Carbon Dioxide (% vol)", 0.0, 3.5, float(co2_val), 0.01)
 h2_input = st.sidebar.slider("H₂ Hydrogen (PPM)", 0.0, 500.0, float(h2_val), 5.0)
 
 # Module 2: Kinematics & Mesh RF
 st.sidebar.markdown(
     textwrap.dedent(f"""
-    <div class="sidebar-mod-badge" style="color: {'#0284C7' if is_light else '#00F0FF'}; margin-top: 0.8rem;">
+    <div class="sidebar-mod-badge" style="color: {'#0369A1' if is_light else '#00F0FF'}; margin-top: 1rem; display: flex; align-items: center; justify-content: space-between;">
         <span>⌖ MODULE 02 · KINEMATICS & RF MESH</span>
+        <span style="font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; opacity: 0.85;">RSSI · TILT</span>
     </div>
     """),
     unsafe_allow_html=True,
 )
-rssi_input = st.sidebar.slider("Sub-GHz Mesh RSSI (dBm)", -110, -40, int(rssi_val), 1, help="Drop below -95 dBm triggers multi-hop relay")
-tilt_input = st.sidebar.slider("Chassis Pitch/Roll Tilt (°)", 0.0, 55.0, float(tilt_val), 0.5, help="Rollover threshold: 30° safe traversal margin")
+rssi_input = st.sidebar.slider("Sub-GHz Mesh RSSI (dBm)", -110, -40, int(rssi_val), 1, help="Signal drop below -95 dBm triggers multi-hop autonomous relay")
+tilt_input = st.sidebar.slider("Chassis Pitch/Roll Tilt (°)", 0.0, 55.0, float(tilt_val), 0.5, help="30° safe traversal margin; flipper compensation above 33°")
 
 # Module 3: FMCW Sub-Surface Bio-Radar
 st.sidebar.markdown(
     textwrap.dedent(f"""
-    <div class="sidebar-mod-badge" style="color: {'#E11D48' if is_light else '#F43F5E'}; margin-top: 0.8rem;">
+    <div class="sidebar-mod-badge" style="color: {'#BE123C' if is_light else '#F43F5E'}; margin-top: 1rem; display: flex; align-items: center; justify-content: space-between;">
         <span>◎ MODULE 03 · FMCW BIO-RADAR VITAL ARRAY</span>
+        <span style="font-size: 0.68rem; font-family: 'JetBrains Mono', monospace; opacity: 0.85;">400MHz UWB</span>
     </div>
     """),
     unsafe_allow_html=True,
 )
-sim_victim = st.sidebar.checkbox("Simulate Trapped Survivor Respiration (0.32 Hz)", value=victim_active)
+sim_victim = st.sidebar.checkbox("Trigger Trapped Survivor Respiration (0.32 Hz)", value=victim_active)
 sim_drift = st.sidebar.checkbox("Inject Dynamic Sensor Noise & Drift", value=False)
 
 # Sidebar Compliance Seal & Clock Footer
@@ -2123,7 +2134,7 @@ with tab_eco:
             """),
             unsafe_allow_html=True,
         )
-        st.link_button("View GitHub Repo ↗", "https://github.com/moinkhanCreates/SETU", use_container_width=True)
+        st.link_button("View GitHub Repo ↗", "https://github.com/abarhammalik/SETU-Dashboard", use_container_width=True)
 
     with eco3:
         st.markdown(
@@ -2205,7 +2216,7 @@ st.markdown(
         </div>
         <div style="text-align: right; margin-top: 0.4rem;">
             Direct links: <a href="https://setu-mine-rescue-rover.vercel.app/" target="_blank" style="color: {ACCENT_PRIMARY}; text-decoration: none;">Web Platform</a> · 
-            <a href="https://github.com/moinkhanCreates/SETU" target="_blank" style="color: {ACCENT_SECONDARY}; text-decoration: none;">GitHub</a> · 
+            <a href="https://github.com/abarhammalik/SETU-Dashboard" target="_blank" style="color: {ACCENT_SECONDARY}; text-decoration: none;">GitHub</a> · 
             Last Sync: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         </div>
     </div>
